@@ -60,7 +60,7 @@ func DefaultWriteTransactionOptions() BeginTransactionOptions {
 func DefaultReadOnlyTransactionOptions() BeginTransactionOptions {
 	return BeginTransactionOptions{
 		AccessMode:     ReadOnly,
-		IsolationLevel: Serializable,
+		IsolationLevel: RepeatableRead,
 		DeferrableMode: NotDeferrable,
 	}
 }
