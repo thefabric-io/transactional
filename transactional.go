@@ -52,15 +52,23 @@ const (
 func DefaultWriteTransactionOptions() BeginTransactionOptions {
 	return BeginTransactionOptions{
 		AccessMode:     ReadWrite,
-		IsolationLevel: Serializable,
+		IsolationLevel: ReadCommitted,
 		DeferrableMode: NotDeferrable,
+	}
+}
+
+func SerializableWriteTransactionOptions() BeginTransactionOptions {
+	return BeginTransactionOptions{
+		AccessMode:     ReadWrite,
+		IsolationLevel: Serializable,
+		DeferrableMode: Deferrable,
 	}
 }
 
 func DefaultReadOnlyTransactionOptions() BeginTransactionOptions {
 	return BeginTransactionOptions{
 		AccessMode:     ReadOnly,
-		IsolationLevel: RepeatableRead,
+		IsolationLevel: ReadCommitted,
 		DeferrableMode: NotDeferrable,
 	}
 }
